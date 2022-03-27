@@ -2,7 +2,7 @@
 $htmlBackground = 'https://iw233.cn/api/Random.php';//自定义背景图片，可以设置为任意图片或随机图片的API，默认无背景
 $htmlBgBlur = 5;//自定义背景高斯模糊，单位px
 $htmlBgOpacity = 0.9;//自定义背景透明度，区间为0-1，0为完全透明，1为完全不透明
-$htmlIcon = './icon.ico';//自定义网站的图标
+$htmlIcon = './icon.ico';//自定义图标
 
 if ($_GET['download'] != null){
     $setuIpInfo = json_decode(urldecode($_GET['download']), true);
