@@ -67,7 +67,7 @@ print_r($array);
 | type | str | 物品类型（角色/武器） |
 | id | int | 物品ID |
 
-#### 调用结果示例（JSON Decoded）
+### 调用结果示例（JSON Decoded）
 ```
 Array
 (
