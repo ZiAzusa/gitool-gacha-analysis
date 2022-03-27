@@ -57,7 +57,7 @@ $array = json_decode($json, true);
 | ------ | ------ | ------ |
 | name | str | 五星物品名称 |
 | count | int | 抽取该物品所用次数 |
-| tyoe | str | 物品类型（角色/武器） |
+| type | str | 物品类型（角色/武器） |
 | id | int | 物品ID |
 
 #### 调用结果示例（JSON Decoded）
