@@ -20,7 +20,7 @@ if ($_GET['download'] != null){
 };
 if ($_POST['url'] != null){
     $context = stream_context_create(['http' => ['method' => 'POST', 'header' => 'Content-Type: application/json', 'content' => json_encode(['url' => $_POST['url']]), 'timeout' => 60]]);
-    $htmlTable = json_decode(file_get_contents('https://gitool.moeloli.cyou/gacha/api.php', false, $context), true);#?type=table
+    $htmlTable = file_get_contents('https://gitool.moeloli.cyou/gacha/api.php?type=table', false, $context);
 };
 $htmlBgHeader = get_headers($htmlBackground, 1);
 if ($htmlBgHeader['Location'] != null) $htmlBackground = $htmlBgHeader['Location'];
