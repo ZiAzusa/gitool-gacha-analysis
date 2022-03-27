@@ -5,7 +5,7 @@
 将本仓库clone到您的网站目录下即可开始使用
 P.S.目前仅支持国内官服的抽卡记录分析
 ## API调用指南：
-在搭建好网站后，您可以通过**POST**的方式调用http(s)://your-server-name/api.php
+在搭建好网站后，您可以通过**POST**的方式调用http(s)://your-server-name/api.php<br>
 调用API的方法应为**application/json**
 ### 具体调用
 | 参数名称 | 数据类型 | 示例 |
