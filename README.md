@@ -14,11 +14,14 @@ P.S.目前仅支持国内官服的抽卡记录分析
 ### 调用方法示例（PHP）
 ```
 <?php
+$url = "https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log";
 $context = stream_context_create([
     'http' => [
         'method' => 'POST',
         'header' => 'Content-Type: application/json',
-        'content' => json_encode(['url' => $_POST['url']]),
+        'content' => json_encode([
+            'url' => $url
+        ]),
         'timeout' => 60
     ]
 ]);
