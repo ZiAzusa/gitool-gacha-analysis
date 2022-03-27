@@ -1,5 +1,5 @@
 <?php
-#API基本信息，若米哈游修改了API地址可以通过这里快速适配，好耶(●'◡'●)
+#米哈游API基本信息，若米哈游修改了API地址可以通过这里快速适配，好耶(●'◡'●)
 $gachaWeb = "webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html";
 $gachaApi = "hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog";
 $characterPool = 301;//角色UP池ID
