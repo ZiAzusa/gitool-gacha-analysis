@@ -200,4 +200,4 @@ Array
 4.支持B服和国际服的抽卡数据分析<br>
 ...
 #### 基于米哈游官方抽卡数据API打造
-#### Powered by 0803QwQ
+#### Powered by 0803QwQ, Thanks for Your Using.
