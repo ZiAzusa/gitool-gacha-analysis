@@ -11,7 +11,7 @@
 | ------ | ------ | ------ |
 | url&emsp;&emsp;&emsp; | str&emsp;&emsp;&emsp; | https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log |
 ### 调用方法示例（PHP）
-`
+```
 $context = stream_context_create([
     'http' => [
         'method' => 'POST',
@@ -22,7 +22,7 @@ $context = stream_context_create([
 ]);
 $json = file_get_contents('http(s)://your-server-name/api.php', false, $context);
 $array = json_decode($json, true);
-`
+```
 ### 具体响应
 | 参数名称 | 数据类型 | 说明 |
 | ------ | ------ | ------ |
@@ -60,7 +60,7 @@ $array = json_decode($json, true);
 | id | int | 物品ID |
 
 #### 调用结果示例（JSON Decoded）
-`
+```
 Array
 (
     [code] => 200
@@ -191,4 +191,4 @@ Array
         )
 
 )
-`
+```
