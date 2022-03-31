@@ -52,8 +52,8 @@ print_r($array);
 | num | int | 该池总抽卡次数 |
 | 4star | info arr | 四星数量和出货率 |
 | 5star | info arr | 五星数量和出货率 |
-| next5star | int | 距离保底的抽数（不适用于：full,novice） |
-| content | content arr[] | 五星物品详细信息（不适用于：full） |
+| next5star | int | 距离保底的抽数（不适用于full和novice） |
+| content | content arr[] | 五星物品详细信息（不适用于full） |
 #### info数组
 | 参数名称 | 数据类型 | 说明 |
 | ------ | ------ | ------ |
