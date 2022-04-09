@@ -56,7 +56,7 @@ if (strstr($gachaUrl, $gachaWeb)){
 }else if (is_numeric($gachaUrl) || $gachaUID != null){
     if(file_exists("data/".$gachaUrl.".json") || file_exists("data/".$gachaUID.".json")){
         $uid = $gachaUrl;
-        $gachaArr = json_decode(file_get_contents("data/".$gachaUrl.".json"));
+        $gachaArr = json_decode(file_get_contents("data/".$gachaUrl.".json"), true);
         goto analysis;
     }else{
         die(json_encode(['code' => 404, 'message' => 'uid not found', 'data' => []]));
