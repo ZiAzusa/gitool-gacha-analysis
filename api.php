@@ -20,7 +20,7 @@ function getColor($name){
             break;
         };
     };
-    foreach ($info as $infoKey => $infoValue) $info[$infoKey] = trim($infoValue);
+    foreach ((array)$info as $infoKey => $infoValue) $info[$infoKey] = trim($infoValue);
     $color = ['火' => '#F2523A', '水' => '#009BFF', '风' => '#4DF5B5', '雷' => '#C27AF2', '草' => '#49C82E', '冰' => '#A6FDFD', '岩' => '#E0A827'];
     return($color[$info[4]]);
 };
