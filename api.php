@@ -21,7 +21,7 @@ function getColor($name){
         };
     };
     foreach ((array)$info as $infoKey => $infoValue) $info[$infoKey] = trim($infoValue);
-    $color = ['火' => '#F2523A', '水' => '#009BFF', '风' => '#4DF5B5', '雷' => '#C27AF2', '草' => '#49C82E', '冰' => '#A6FDFD', '岩' => '#E0A827'];
+    $color = ['火' => '#F2523A', '水' => '#009BFF', '风' => '#4DF5B5', '雷' => '#C27AF2', '草' => '#49C82E', '冰' => '#97F1FA', '岩' => '#E0A827'];
     return($color[$info[4]]);
 };
 function dataUpdate($array, $file){
@@ -54,7 +54,8 @@ if (strstr($gachaUrl, $gachaWeb)){
     };
     $gachaUrl = substr($gachaUrl, 0, (strlen($gachaUrl) - 1));
 }else if (is_numeric($gachaUrl) || $gachaUID != null){
-    if(file_exists("data/".$gachaUrl.".json") || file_exists("data/".$gachaUID.".json")){
+    if ($gachaUID != null) $gachaUrl = $gachaUID;
+    if(file_exists("data/".$gachaUrl.".json")){
         $uid = $gachaUrl;
         $gachaArr = json_decode(file_get_contents("data/".$gachaUrl.".json"), true);
         goto analysis;
