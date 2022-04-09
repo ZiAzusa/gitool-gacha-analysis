@@ -38,7 +38,6 @@ $novicePool = 100;
 $postInput = @json_decode(file_get_contents("php://input"), true);
 $gachaUrl = @$postInput['url'];
 $gachaUID = @$postInput['uid'];
-if (!$gachaUrl) $gachaUrl = $_GET['url'];
 if (strstr($gachaUrl, $gachaWeb)){
     $gachaUrl = str_replace($gachaWeb, $gachaApi, $gachaUrl);
     $gachaUrl = str_replace("#/log", null, $gachaUrl);
