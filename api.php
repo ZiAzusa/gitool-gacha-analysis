@@ -15,7 +15,10 @@ function getColor($name){
     foreach ($table as $key => $tr){
         $td = explode('{td}', $tr);
         array_pop($td);
-        if (trim($td[1]) == $name && count($td) == 12) $info = $td;
+        if (trim($td[1]) == $name && count($td) == 12){
+            $info = $td;
+            break;
+        };
     };
     foreach ($info as $infoKey => $infoValue) $info[$infoKey] = trim($infoValue);
     $color = ['火' => '#F2523A', '水' => '#009BFF', '风' => '#4DF5B5', '雷' => '#C27AF2', '草' => '#49C82E', '冰' => '#A6FDFD', '岩' => '#E0A827'];
@@ -32,7 +35,9 @@ $characterPool = 301;
 $armsPool = 302;
 $residentPool = 200;
 $novicePool = 100;
-$gachaUrl = @json_decode(file_get_contents("php://input"), true)['url'];
+$postInput = @json_decode(file_get_contents("php://input"), true);
+$gachaUrl = @$postInput['url'];
+$gachaUID = @$postInput['uid'];
 if (!$gachaUrl) $gachaUrl = $_GET['url'];
 if (strstr($gachaUrl, $gachaWeb)){
     $gachaUrl = str_replace($gachaWeb, $gachaApi, $gachaUrl);
@@ -48,6 +53,14 @@ if (strstr($gachaUrl, $gachaWeb)){
         $gachaUrl .= $gachaUrlArr[$gachaUrlKey]."&";
     };
     $gachaUrl = substr($gachaUrl, 0, (strlen($gachaUrl) - 1));
+}else if (is_numeric($gachaUrl) || $gachaUID != null){
+    if(file_exists("data/".$gachaUrl.".json") || file_exists("data/".$gachaUID.".json")){
+        $uid = $gachaUrl;
+        $gachaArr = json_decode(file_get_contents("data/".$gachaUrl.".json"));
+        goto analysis;
+    }else{
+        die(json_encode(['code' => 404, 'message' => 'uid not found', 'data' => []]));
+    };
 }else{
     die(json_encode(['code' => 400, 'message' => '传入的URL不正确', 'data' => []]));
 };
@@ -89,6 +102,7 @@ if (!file_exists($dataFile)){
     dataUpdate($gachaAllArrX, $dataFile);
     $gachaArr = $gachaAllArrX;
 };
+analysis:
 foreach ($gachaArr as $gachaKey => $gachaValue){
     $gachaName = ['pool5star', 'pool5starCount', 'pool5starCountX', 'pool5starNum', 'pool5starRatio', 'pool4starNum', 'pool4starRatio', 'poolAllNum'];
     foreach ($gachaName as $gachaNameValue) $$gachaNameValue = $gachaNameValue.$gachaKey;
@@ -183,5 +197,4 @@ if ($_GET['type'] == "table"){
     ];
     print_r(json_encode($result));
 };
-die();
 ?>
