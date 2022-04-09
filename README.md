@@ -10,9 +10,9 @@ P.S.目前仅支持国内官服的抽卡记录分析
 ### 具体调用
 | 参数名称 | 数据类型 | 示例 |
 | ------ | ------ | ------ |
-| url&emsp;&emsp;&emsp; | str&emsp;&emsp;&emsp;<br>(必须)&emsp;&emsp;&emsp; | https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log |
-| uid&emsp;&emsp;&emsp; | int&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br>(可选)&emsp;&emsp;&emsp; | 123456789 |
-| type&emsp;&emsp;&emsp; | str&emsp;&emsp;&emsp;<br>(可选)&emsp;&emsp;&emsp; | table |
+| url&emsp;&emsp;&emsp; | str&emsp;&emsp;&emsp;<br>(必须) | https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log |
+| uid&emsp;&emsp;&emsp; | int&emsp;&emsp;&emsp;<br>(可选) | 123456789 |
+| type&emsp;&emsp;&emsp; | str&emsp;&emsp;&emsp;<br>(可选) | table |
 #### 注意：<br>当传入url参数时，uid参数将无效<br>仅传入uid参数时，若该uid使用过抽卡记录分析工具，则会获取本地保存的数据进行分析输出<br>若传入type=table，则会将分析结果按照html表格的形式输出，当type为空或其他值时，会默认输出json结果
 ### 调用方法示例（PHP）
 ```
