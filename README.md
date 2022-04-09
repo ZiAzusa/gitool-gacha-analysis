@@ -10,9 +10,9 @@ P.S.目前仅支持国内官服的抽卡记录分析
 ### 具体调用
 | 参数名称 | 数据类型 | 示例 |
 | ------ | ------ | ------ |
-| url&emsp;&emsp;&emsp; | str (必须)&emsp;&emsp; | https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log |
-| uid&emsp;&emsp;&emsp; | int (可选)&emsp;&emsp; | 123456789 |
-| type&emsp;&emsp;&emsp; | str (可选)&emsp;&emsp; | table |
+| url&emsp;&emsp;&emsp; | str (必须)&emsp;&emsp;&emsp; | https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log |
+| uid&emsp;&emsp;&emsp; | int (可选)&emsp;&emsp;&emsp; | 123456789 |
+| type&emsp;&emsp;&emsp; | str (可选)&emsp;&emsp;&emsp; | table |
 #### 注意：<br>当传入url参数时，uid参数将无效<br>仅传入uid参数时，若该uid使用过抽卡记录分析工具，则会获取本地保存的数据进行分析输出<br>若传入type=table，则会将分析结果按照html表格的形式输出，当type为空或其他值时，会默认输出json结果
 ### 调用方法示例（PHP）
 ```
@@ -209,14 +209,15 @@ Array
 2.将数据保存操作封装为函数<br>
 3.支持B服的抽卡记录查询（UID以5开头）<br>
 4.移除了开发阶段在api.php遗留的HTML表单提交页面<br>
-5.移除了一些无意义注释
+5.支持通过传入已分析过的UID获取曾保存的抽卡记录<br>
+6.移除了一些无意义注释
 ## Todo（画饼）
 ~~1.通过颜色区分角色属性~~<br>
 2.通过显示角色头像/武器缩略图的方式显示五星物品<br>
 3.在API返回角色头像URL<br>
-4.支持~~B服和~~国际服的抽卡数据分析<br>
+4.支持国际服的抽卡数据分析<br>
 5.添加对欧非情况的评判<br>
-6.通过提交UID的方式获取曾保存的抽卡记录<br>
+~~6.通过提交UID的方式获取曾保存的抽卡记录~~<br>
 ...
 #### 基于米哈游官方抽卡数据API打造
 #### Powered by 0803QwQ, Thanks for Your Using.
