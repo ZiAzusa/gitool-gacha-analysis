@@ -8,7 +8,7 @@ P.S.目前仅支持国内官服的抽卡记录分析
 在搭建好网站后，您可以通过**POST**的方式调用http(s)://your-server-name/api.php<br>
 调用API的方法应为**application/json**
 ### 具体调用
-| 参数名称 | 数据类型 | 示例 |
+| 参数名称 | 数据类型&emsp; | 示例 |
 | ------ | ------ | ------ |
 | url&emsp;&emsp;&emsp; | str (必须)&emsp;&emsp;&emsp; | https://webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html?authkey_ver=1&sign_type=2&auth_appid=webview_gacha&init_type=301&gacha_id=xxx&lang=zh-cn&device_type=mobile&ext=xxx&game_version=xxx&plat_type=xxx&authkey=xxx&game_biz=hk4e_cn#/log |
 | uid&emsp;&emsp;&emsp; | int (可选)&emsp;&emsp;&emsp; | 123456789 |
