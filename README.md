@@ -204,9 +204,8 @@ Array
 )
 ```
 ### 调用结果示例（HTML Table）
-```
 <table border="2" bordercolor="black" width="300" cellspacing="0" cellpadding="5"><tbody><tr><td>原神UID</td><td colspan="2">126036835</td></tr><tr><td rowspan="3">全部数据</td><td>抽卡总数</td><td>110抽</td></tr><tr><td>四星数量</td><td>16个(14.55%)</td></tr><tr><td>五星数量</td><td>2个(1.82%)</td></tr><tr><td rowspan="6">角色池</td><td>抽卡总数</td><td>71抽</td></tr><tr><td>四星数量</td><td>11个(15.49%)</td></tr><tr><td>五星数量</td><td>1个(1.41%)</td></tr><tr><td>距离保底</td><td>71抽</td></tr><tr><td rowspan="2">五星物品</td></tr><tr><td style="color:#4DF5B5">1.魈[52]</td></tr><tr><td rowspan="5">武器池</td><td>抽卡总数</td><td>19抽</td></tr><tr><td>四星数量</td><td>2个(10.53%)</td></tr><tr><td>五星数量</td><td>0个(0%)</td></tr><tr><td>距离保底</td><td>61抽</td></tr><tr><td rowspan="1">五星物品</td><td>(○´･д･)ﾉ</td></tr><tr><td rowspan="6">常驻池</td><td>抽卡总数</td><td>20抽</td></tr><tr><td>四星数量</td><td>3个(15%)</td></tr><tr><td>五星数量</td><td>1个(5%)</td></tr><tr><td>距离保底</td><td>80抽</td></tr><tr><td rowspan="2">五星物品</td></tr><tr><td style="color:">1.天空之傲[10]</td></tr><tr><td rowspan="4">新手池</td><td>抽卡总数</td><td>0抽</td></tr><tr><td>四星数量</td><td>0个(0%)</td></tr><tr><td>五星数量</td><td>0个(0%)</td></tr><tr><td rowspan="1">五星物品</td><td>(○´･д･)ﾉ</td></tr></tbody></table>
-```
+<br>
 ## 更新记录
 #### 2022/4/9:
 1.添加了通过解析BiliWiKi的HTML文档获取角色属性的函数<br>
