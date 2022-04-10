@@ -66,6 +66,7 @@ print_r($array);
 | 参数名称 | 数据类型 | 说明 |
 | ------ | ------ | ------ |
 | name | str | 五星物品名称 |
+| avatar | str | 五星物品预览图 |
 | count | int | 抽取该物品所用次数 |
 | type | str | 物品类型（角色/武器） |
 | id | int | 物品ID |
@@ -117,6 +118,7 @@ Array
                             [0] => Array
                                 (
                                     [name] => 魈
+                                    [avatar] => https://patchwiki.biligame.com/images/ys/thumb/xxx.png
                                     [count] => 52
                                     [type] => 角色
                                     [id] => 1641531960002136435
@@ -169,6 +171,7 @@ Array
                             [0] => Array
                                 (
                                     [name] => 天空之傲
+                                    [avatar] => https://patchwiki.biligame.com/images/ys/thumb/xxx.png
                                     [count] => 10
                                     [type] => 武器
                                     [id] => 1641632760000784235
@@ -211,10 +214,15 @@ Array
 4.移除了开发阶段在api.php遗留的HTML表单提交页面<br>
 5.支持通过传入已分析过的UID获取曾保存的抽卡记录<br>
 6.移除了一些无意义注释
+#### 2022/4/11:
+1.支持在HTML表格获取五星物品缩略图<br>
+2.支持通过API获取五星物品缩略图<br>
+3.改进了getColor函数，更名为getInfo，可以通过解析BiliWiKi的HTML文档获取角色或武器的详细信息<br>
+4.添加了切换输出物品缩略图或物品输出的按钮，并添加了相关的CSS样式
 ## Todo（画饼）
 ~~1.通过颜色区分角色属性~~<br>
-2.通过显示角色头像/武器缩略图的方式显示五星物品<br>
-3.在API返回角色头像URL<br>
+~~2.通过显示角色头像/武器缩略图的方式显示五星物品~~<br>
+~~3.在API返回角色头像URL~~<br>
 4.支持国际服的抽卡数据分析<br>
 5.添加对欧非情况的评判<br>
 ~~6.通过提交UID的方式获取曾保存的抽卡记录~~<br>
