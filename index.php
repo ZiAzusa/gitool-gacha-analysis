@@ -59,11 +59,11 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
     }
     </style>
 </head>
-<body>
+<body style='margin:0px'>
     <div id='overlay' class='overlay'>
         <div class='text-bg'>
             <div class='input_control'>
-                <form method='post'>
+                <form method='post' style='margin:0px'>
                     <h4>请在下方文本框粘贴抽卡记录地址:</h4>
                     <h6>P.S.如果您曾使用过本工具，您亦可以输入您的UID以获取曾经保存的记录；注意，如需更新记录还请重新获取并粘贴新的抽卡记录地址</h6>
                     <textarea id='url' name='url' style='min-width:100%;max-width:100%;min-height:15em'><?php print_r($_POST['url']);?></textarea>
@@ -71,7 +71,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
                 </form>
                 <?php print_r($htmlTable);?>
                 <footer id='footer'>
-                    <p class='copyright'>2022 &copy; Powered by 0803QwQ</p>
+                    <hr><p class='copyright'>2022 &copy; Powered by 0803QwQ</p>
                 </footer>
             </div>
         </div>
@@ -83,7 +83,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
         <div id='imgLayer' onclick="closeBg()" />
         <div id='imgBoxl' class='modal'>
             <a href="JavaScript:download('<?php print_r($bgDownload);?>')">
-                <hr><img id='bigimg' src='<?php print_r($htmlBackground);?>' title='点击图片以保存&#10;点击空白处以关闭' />
+                <img id='bigimg' src='<?php print_r($htmlBackground);?>' title='点击图片以保存&#10;点击空白处以关闭' />
             </a>
         </div>
     </div>
