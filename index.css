@@ -111,6 +111,24 @@ button[id='dljson']:hover {
     background:#FF9955;
     -webkit-appearance:none;
 }
+button[id='showB'] {
+    width:360px;
+    margin:20px auto;
+    height:40px;
+    border-width:0px;
+    border-radius:3px;
+    background:#90FF1E;
+    cursor:pointer;
+    outline:none;
+    font-family:Microsoft YaHei;
+    color:white;
+    font-size:17px;
+    -webkit-appearance:none;
+}
+button[id='showB']:hover {
+    background:#99FF55;
+    -webkit-appearance:none;
+}
 ::-moz-placeholder {
     color:#6a6f77;
 }
