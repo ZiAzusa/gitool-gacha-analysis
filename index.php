@@ -37,7 +37,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
     <title>原神抽卡记录分析工具</title>
     <link href='<?php print_r($htmlIcon);?>' rel='icon' type='image/x-icon' />
     <style>
-    <?php print_r(file_get_contents("index.css"));?>
+    <?php print_r(file_get_contents("index.css")."\n");?>
     .overlay:before {
         background:url(<?php print_r($htmlBackground);?>) no-repeat;
         background-size:cover;
