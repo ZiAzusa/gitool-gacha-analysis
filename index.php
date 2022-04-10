@@ -35,7 +35,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
     <meta http-equiv'Content-Type' content='text/html; charset=utf-8'>
     <meta name='viewport' content='width=device-width,maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
     <title>原神抽卡记录分析工具</title>
-    <link href='{$htmlIcon}' rel='icon' type='image/x-icon' />
+    <link href='<?php print_r($htmlIcon);?>' rel='icon' type='image/x-icon' />
     <style>
     <?php print_r(file_get_contents("index.css"));?>
     .overlay:before {
