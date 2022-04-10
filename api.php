@@ -121,7 +121,7 @@ analysis:
 foreach ($gachaArr as $gachaKey => $gachaValue){
     $gachaName = ['pool5star', 'pool5starCount', 'pool5starCountX', 'pool5starNum', 'pool5starRatio', 'pool4starNum', 'pool4starRatio', 'poolAllNum'];
     foreach ($gachaName as $gachaNameValue) $$gachaNameValue = $gachaNameValue.$gachaKey;
-    $$pool5star = [];
+    $$pool5star = (array)$$pool5star;
     $$pool5starCountX = 0;
     $$pool5starNum = strval(0);
     $$pool4starNum = strval(0);
@@ -131,11 +131,11 @@ foreach ($gachaArr as $gachaKey => $gachaValue){
         if ($gachaValueX['rank_type'] == 4){
             $$pool4starNum ++;
         }else if ($gachaValueX['rank_type'] == 5){
-            if ($$pool5star = []) $$pool5starCount = $$poolAllNum;
+            if ($$pool5star == []) $$pool5starCount = $$poolAllNum;
             $$pool5starNum ++;
             $$pool5starCount = $$poolAllNum - $$pool5starCountX;
             $$pool5starCountX += $$pool5starCount;
-            ${$pool5star}[] = ["name" => $gachaValueX['name'], "avatar" => getInfo($gachaValueX['name'], $gachaValueX['item_type'], "avatar"), "count" => $$pool5starCount, "type" => $gachaValueX['item_type'], "id" => $gachaValueX['id']];
+            array_push($$pool5star, ["name" => $gachaValueX['name'], "avatar" => getInfo($gachaValueX['name'], $gachaValueX['item_type'], "avatar"), "count" => $$pool5starCount, "type" => $gachaValueX['item_type'], "id" => $gachaValueX['id']]);
         };
     };
     $$pool5starRatio = round(($$poolAllNum != 0 ? ((100 * $$pool5starNum) / $$poolAllNum) : 0), 2);
