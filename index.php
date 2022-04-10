@@ -25,7 +25,7 @@ if ($_POST['url'] != null){
     $htmlTable = file_get_contents('https://gitool.moeloli.cyou/gacha/api.php?type=table', false, $context);
     if ($htmlTableX = @json_decode($htmlTable, true)) $htmlTable = $htmlTableX['code']."<br>".$htmlTableX['message'];
 };
-$htmlBgHeader = get_headers($htmlBackground, 1);
+$htmlBgHeader = @get_headers($htmlBackground, 1);
 if ($htmlBgHeader['Location'] != null) $htmlBackground = $htmlBgHeader['Location'];
 if ($htmlBgHeader['location'] != null) $htmlBackground = $htmlBgHeader['location'];
 $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
