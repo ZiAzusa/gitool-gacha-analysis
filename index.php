@@ -3,6 +3,7 @@ $htmlBackground = 'https://iw233.cn/api/Random.php';//自定义背景图片，�
 $htmlBgBlur = 0;//自定义背景高斯模糊，单位px
 $htmlBgOpacity = 1;//自定义背景透明度，区间为0-1，0为完全透明，1为完全不透明
 $htmlIcon = './icon.ico';//自定义图标
+
 if ($_GET['download'] != null){
     $downloadInfo = json_decode(urldecode($_GET['download']), true);
     if ($downloadInfo['json'] != null){
@@ -49,7 +50,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
         top:0;
         left:0;
         z-index:-1;
-        -webkit-filter:blur(3px);
+        -webkit-filter:blur(<?php print_r($htmlBgBlur);?>px);
         filter:blur(<?php print_r($htmlBgBlur);?>px);
         opacity:<?php print_r($htmlBgOpacity);?>;
         margin:0;
@@ -64,6 +65,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
             <div class='input_control'>
                 <form method='post'>
                     <h4>请在下方文本框粘贴抽卡记录地址:</h4>
+                    <h6>P.S.如果您曾使用过本工具，您亦可以输入您的UID以获取曾经保存的记录；注意，如需更新记录还请重新获取并粘贴新的抽卡记录地址</h6>
                     <textarea id='url' name='url' style='min-width:100%;max-width:100%;min-height:15em'><?php print_r($_POST['url']);?></textarea>
                     <input id='submit' type='submit' value='开始分析抽卡记录',name='submit' onclick="alert('请稍作等待，我们正在获取您的全部抽卡记录并分析！切勿刷新页面，这可能会导致存储在本地的数据出现错误！');">
                 </form><hr>
@@ -81,7 +83,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
         <div id='imgLayer' onclick="closeBg()" />
         <div id='imgBoxl' class='modal'>
             <a href="JavaScript:download('<?php print_r($bgDownload);?>')">
-                <img id='bigimg' src='<?php print_r($htmlBackground);?>' title='点击图片以保存\n点击空白处以关闭' />
+                <img id='bigimg' src='<?php print_r($htmlBackground);?>' title='点击图片以保存&#10;点击空白处以关闭' />
             </a>
         </div>
     </div>
