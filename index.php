@@ -68,7 +68,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
                     <h6>P.S.如果您曾使用过本工具，您亦可以输入您的UID以获取曾经保存的记录；注意，如需更新记录还请重新获取并粘贴新的抽卡记录地址</h6>
                     <textarea id='url' name='url' style='min-width:100%;max-width:100%;min-height:15em'><?php print_r($_POST['url']);?></textarea>
                     <input id='submit' type='submit' value='开始分析抽卡记录',name='submit' onclick="alert('请稍作等待，我们正在获取您的全部抽卡记录并分析！切勿刷新页面，这可能会导致存储在本地的数据出现错误！');">
-                </form><hr>
+                </form>
                 <?php print_r($htmlTable);?>
                 <footer id='footer'>
                     <p class='copyright'>2022 &copy; Powered by 0803QwQ</p>
@@ -83,7 +83,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
         <div id='imgLayer' onclick="closeBg()" />
         <div id='imgBoxl' class='modal'>
             <a href="JavaScript:download('<?php print_r($bgDownload);?>')">
-                <img id='bigimg' src='<?php print_r($htmlBackground);?>' title='点击图片以保存&#10;点击空白处以关闭' />
+                <hr><img id='bigimg' src='<?php print_r($htmlBackground);?>' title='点击图片以保存&#10;点击空白处以关闭' />
             </a>
         </div>
     </div>
