@@ -34,7 +34,7 @@ function getInfo($name, $type, $which){
         };
     };
     foreach ((array)$info as $infoKey => $infoValue) $info[$infoKey] = trim($infoValue);
-    $color = ['火' => '#F2523A', '水' => '#009BFF', '风' => '#4DF5B5', '雷' => '#C27AF2', '草' => '#49C82E', '冰' => '#97F1FA', '岩' => '#E0A827'];
+    $color = ['火' => '#F2523A', '水' => '#009BFF', '风' => '#4DF5B5', '雷' => '#AE81FF', '草' => '#49C82E', '冰' => '#66CCFF', '岩' => '#E0A827'];
     if ($which == "color" && $type == "角色") return($color[$info[4]]);
     if ($which == "avatar") return(explode("\"", $info[0])[3]);
     return("传入数据未找到");
