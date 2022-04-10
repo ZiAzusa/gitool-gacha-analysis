@@ -70,7 +70,6 @@ print_r($array);
 | count | int | 抽取该物品所用次数 |
 | type | str | 物品类型（角色/武器） |
 | id | int | 物品ID |
-
 ### 调用结果示例（JSON Decoded）
 ```
 Array
@@ -206,6 +205,8 @@ Array
 
 )
 ```
+### 网页效果图
+![image](https://github.com/0803QwQ/gitool-gacha-analysis/blob/main/data/demo.jpeg)
 ## 更新记录
 #### 2022/4/9:
 1.添加了通过解析BiliWiKi的HTML文档获取角色属性的函数<br>
