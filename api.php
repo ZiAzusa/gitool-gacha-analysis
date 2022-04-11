@@ -166,15 +166,15 @@ if ($_GET['type'] == "table"){
     foreach ($pool5star3 as $pool5star3Key => $pool5star3Value) print_r("<tr><td style='color:".getInfo($pool5star3Value['name'], "角色", "color")."'>".($pool5star3Key + 1).".<span id='".$pool5star3Value['name']."'>".$pool5star3Value['name']."</span>[".$pool5star3Value['count']."]</td></tr>");
     if (count($pool5star3) == 0) print_r("<td>(○´･д･)ﾉ</td>");
     print_r("</tr></table></div><p>抽卡记录分析工具已被使用 {$times['web']} 次</p><script>function showAvatar(){");
-    foreach ($pool5star0 as $pool5star0Key => $pool5star0Value) print_r("document.getElementById('".$pool5star0Value['name']."').innerHTML=\"<img src='".$pool5star0Value['avatar']."' style='hight:40px;width:40px' />\";");
-    foreach ($pool5star1 as $pool5star1Key => $pool5star1Value) print_r("document.getElementById('".$pool5star1Value['name']."').innerHTML=\"<img src='".$pool5star1Value['avatar']."' style='hight:40px;width:40px' />\";");
-    foreach ($pool5star2 as $pool5star2Key => $pool5star2Value) print_r("document.getElementById('".$pool5star2Value['name']."').innerHTML=\"<img src='".$pool5star2Value['avatar']."' style='hight:40px;width:40px' />\";");
-    foreach ($pool5star3 as $pool5star3Key => $pool5star3Value) print_r("document.getElementById('".$pool5star3Value['name']."').innerHTML=\"<img src='".$pool5star3Value['avatar']."' style='hight:40px;width:40px' />\";");
+    for ($pool5starX = 0; $pool5starX <= 3; $pool5starX ++){
+        $pool5star = "pool5star".strval($pool5starX);
+        foreach ($$pool5star as $pool5starXKey => $pool5starXValue) print_r("document.getElementById('".$pool5starXValue['name']."').innerHTML=\"<img src='".$pool5starXValue['avatar']."' style='hight:40px;width:40px' />\";");
+    };
     print_r("document.getElementById('showA').href=\"JavaScript:showName()\";document.getElementById('showB').innerHTML=\"显示五星物品名称\";};function showName(){");
-    foreach ($pool5star0 as $pool5star0Key => $pool5star0Value) print_r("document.getElementById('".$pool5star0Value['name']."').innerHTML=\"".$pool5star0Value['name']."\";");
-    foreach ($pool5star1 as $pool5star1Key => $pool5star1Value) print_r("document.getElementById('".$pool5star1Value['name']."').innerHTML=\"".$pool5star1Value['name']."\";");
-    foreach ($pool5star2 as $pool5star2Key => $pool5star2Value) print_r("document.getElementById('".$pool5star2Value['name']."').innerHTML=\"".$pool5star2Value['name']."\";");
-    foreach ($pool5star3 as $pool5star3Key => $pool5star3Value) print_r("document.getElementById('".$pool5star3Value['name']."').innerHTML=\"".$pool5star3Value['name']."\";");
+    for ($pool5starX = 0; $pool5starX <= 3; $pool5starX ++){
+        $pool5star = "pool5star".strval($pool5starX);
+        foreach ($$pool5star as $pool5starXKey => $pool5starXValue) print_r("document.getElementById('".$pool5starXValue['name']."').innerHTML=\"".$pool5starXValue['name']."\";");
+    };
    print_r("document.getElementById('showA').href=\"JavaScript:showAvatar()\";document.getElementById('showB').innerHTML=\"显示五星物品预览\";};</script>");
 }else{
     if ($uid != null){
