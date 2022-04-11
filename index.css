@@ -75,7 +75,7 @@ input[id='submit'] {
     height:40px;
     border-width:0px;
     border-radius:3px;
-    background:#1E90FF;
+    background:#1E83FF;
     cursor:pointer;
     outline:none;
     font-family:Microsoft YaHei;
@@ -84,7 +84,7 @@ input[id='submit'] {
     -webkit-appearance:none;
 }
 input[id='submit']:hover {
-    background:#5599FF;
+    background:#3C8DFF;
     -webkit-appearance:none;
 }
 ::-moz-placeholder {
@@ -99,7 +99,7 @@ button[id='dljson'] {
     height:40px;
     border-width:0px;
     border-radius:3px;
-    background:#FF901E;
+    background:#44FF1E;
     cursor:pointer;
     outline:none;
     font-family:Microsoft YaHei;
@@ -108,7 +108,7 @@ button[id='dljson'] {
     -webkit-appearance:none;
 }
 button[id='dljson']:hover {
-    background:#FF9955;
+    background:#4EFF3C;
     -webkit-appearance:none;
 }
 button[id='showB'] {
@@ -117,7 +117,7 @@ button[id='showB'] {
     height:40px;
     border-width:0px;
     border-radius:3px;
-    background:#90FF1E;
+    background:#FFB31E;
     cursor:pointer;
     outline:none;
     font-family:Microsoft YaHei;
@@ -126,7 +126,7 @@ button[id='showB'] {
     -webkit-appearance:none;
 }
 button[id='showB']:hover {
-    background:#99FF55;
+    background:#FFBD3C;
     -webkit-appearance:none;
 }
 ::-moz-placeholder {
