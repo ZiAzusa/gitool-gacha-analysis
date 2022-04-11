@@ -167,7 +167,7 @@ if ($_GET['type'] == "table"){
     for ($poolType = 0; $poolType <= 3; $poolType ++){
         foreach ($gachaName as $gachaNameValue) $$gachaNameValue = $gachaNameValue.strval($poolType);
         print_r("</tr><td rowspan='".(5 + count($$pool5star))."'>{$poolNameArr[$poolType]}</td><td>抽卡总数</td><td>{$$poolAllNum}抽</td></tr><tr><td>四星数量</td><td>{$$pool4starNum}个({$$pool4starRatio}%)</td></tr><tr><td>五星数量</td><td>{$$pool5starNum}个({$$pool5starRatio}%)</td></tr><tr><td>距离保底</td><td>".(90 - ($$poolAllNum - $$pool5starCountX))."抽</td></tr><tr><td rowspan='".(1 + count($$pool5star))."'>五星物品</td>");
-        foreach ($$pool5star as $pool5starXKey => $pool5starXValue) print_r("<tr><td style='color:".getInfo($pool5starXValue['name'], $pool5starXValue['type'], "color")."'>".($pool5starXKey + 1).".<span id='".$pool5starXValue['name']."'>".$pool5starXValue['name']."</span>[".$pool5starXValue['count']."]</td></tr>");
+        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("<tr><td style='color:".getInfo($poolTypeValue['name'], $poolTypeValue['type'], "color")."'>".($poolTypeKey + 1).".<span id='".$poolTypeValue['name']."'>".$poolTypeValue['name']."</span>[".$poolTypeValue['count']."]</td></tr>");
         if (count($$pool5star) == 0) print_r("<td>(○´･д･)ﾉ</td>");
     };
     print_r("</tr></table></div><p>抽卡记录分析工具已被使用 {$times['web']} 次</p><script>function showAvatar(){");
