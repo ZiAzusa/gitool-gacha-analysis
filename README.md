@@ -205,8 +205,6 @@ Array
 
 )
 ```
-### 网页效果图
-![image](https://github.com/0803QwQ/gitool-gacha-analysis/blob/main/data/demo.jpg)
 ## 更新记录
 #### 2022/4/9:
 1.添加了通过解析BiliWiKi的HTML文档获取角色属性的函数<br>
