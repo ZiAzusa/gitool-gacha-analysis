@@ -4,6 +4,21 @@ $htmlBgBlur = 0;//自定义背景高斯模糊，单位px
 $htmlBgOpacity = 1;//自定义背景透明度，区间为0-1，0为完全透明，1为完全不透明
 $htmlIcon = './icon.ico';//自定义图标
 
+function post($url, $data){
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($curl, CURLOPT_POST, 1);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+curl_setopt($curl, CURLOPT_CONNECTTIMEOUT_MS, 0);
+curl_setopt($curl, CURLOPT_HEADER, 0);
+curl_setopt($curl, CURLOPT_HTTPHEADER, ['Content-Type: application/json; charset=utf-8', 'Content-Length:'.strlen($data)]);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+$res = curl_exec($curl);
+curl_close($curl);
+return $res;
+};
 if ($_GET['download'] != null){
     $downloadInfo = json_decode(urldecode($_GET['download']), true);
     if ($downloadInfo['json'] != null){
@@ -22,8 +37,9 @@ if ($_GET['download'] != null){
     exit;
 };
 if ($_POST['url'] != null){
-    $context = stream_context_create(['http' => ['method' => 'POST', 'header' => 'Content-Type: application/json', 'content' => json_encode(['url' => $_POST['url']]), 'timeout' => 60]]);
-    $htmlTable = file_get_contents('https://gitool.moeloli.cyou/gacha/api.php?type=table', false, $context);
+    if ($_SERVER["SERVER_PORT"] != ("80" || "443")) $serverPort = ":".$_SERVER["SERVER_PORT"];
+    $api = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['SERVER_NAME'].$serverPort.dirname($_SERVER['PHP_SELF'])."/api.php?type=table";
+    $htmlTable = post($api, json_encode(['url' => $_POST['url']]));
     if ($htmlTableX = @json_decode($htmlTable, true)) $htmlTable = $htmlTableX['code']."<br>".$htmlTableX['message'];
 };
 $htmlBgHeader = @get_headers($htmlBackground, 1);
@@ -67,7 +83,7 @@ $bgDownload = urlencode(json_encode(['url' => $htmlBackground]));
                     <h4>请在下方文本框粘贴抽卡记录地址:</h4>
                     <h6>P.S.如果您曾使用过本工具，您亦可以输入您的UID以获取曾经保存的记录；注意，如需更新记录还请重新获取并粘贴新的抽卡记录地址</h6>
                     <textarea id='url' name='url' style='min-width:100%;max-width:100%;min-height:15em'><?php print_r($_POST['url']);?></textarea>
-                    <input id='submit' type='submit' value='开始分析抽卡记录',name='submit' onclick="alert('请稍作等待，我们正在获取您的全部抽卡记录并分析！切勿刷新页面，这可能会导致存储在本地的数据出现错误！');">
+                    <input id='submit' type='submit' value='开始分析抽卡记录',name='submit' <?php if($_GET['app'] == null) print_r("onclick=\"alert('请稍作等待，我们正在逐页获取您的全部抽卡记录并分析；\\n这意味着您抽卡记录越多，分析时间也会越长，请见谅！\\n切勿刷新页面，这可能会导致存储在网站服务器上的数据出现错误！');\"");?>>
                 </form>
                 <?php print_r($htmlTable);?>
                 <footer id='footer'>
