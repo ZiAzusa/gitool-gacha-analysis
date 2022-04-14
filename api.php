@@ -53,6 +53,7 @@ function dataUpdate($array, $file){
     fwrite($fp, json_encode($array));
     fclose($fp);
 };
+$allowDownload = false;
 $gachaWeb = "webstatic.mihoyo.com/hk4e/event/e20190909gacha/index.html";
 $gachaApi = "hk4e-api.mihoyo.com/event/gacha_info/api/getGachaLog";
 $characterPool = 301;
@@ -161,24 +162,38 @@ if ($_GET['type'] == "table"){
         $times['web'] ++;
         dataUpdate($times, "data/view.json");
     };
-    $jsonDownload = urlencode(json_encode(['json' => 'data/'.$uid.'.json']));
-    print_r("<a href=\"JavaScript:download('{$jsonDownload}')\"><button id='dljson'>下载抽卡数据表单</button></a><a id='showA' href=\"JavaScript:showAvatar()\"><button id='showB'>显示五星物品预览</button></a><div class='notice'><table border='2' bordercolor='black' width='300' cellspacing='0' cellpadding='5'><tr><td>原神UID</td><td colspan='2'>".$uid."</td></tr><tr><td rowspan='3'>全部数据</td><td>抽卡总数</td><td>{$poolAllNumFull}抽</td></tr><tr><td>四星数量</td><td>{$pool4starNumFull}个({$pool4starRatioFull}%)</td></tr><tr><td>五星数量</td><td>{$pool5starNumFull}个({$pool5starRatioFull}%)</td>");
+    if ($allowDownload == true){
+        $jsonDownload = urlencode(json_encode(['json' => 'data/'.$uid.'.json']));
+        print_r("<a href=\"JavaScript:download('{$jsonDownload}')\"><button id='dljson'>下载抽卡数据表单</button></a>");
+    };
+    print_r("<a id='showA' href=\"JavaScript:showAvatar()\"><button id='showB'>显示五星物品预览</button></a><div class='notice'><table border='2' bordercolor='black' width='300' cellspacing='0' cellpadding='5'><tr><td>原神UID</td><td colspan='2'>".$uid."</td></tr><tr><td rowspan='3'>全部数据</td><td>抽卡总数</td><td>{$poolAllNumFull}抽</td></tr><tr><td>四星数量</td><td>{$pool4starNumFull}个({$pool4starRatioFull}%)</td></tr><tr><td>五星数量</td><td>{$pool5starNumFull}个({$pool5starRatioFull}%)</td>");
     $poolNameArr = ['角色池', '武器池', '常驻池', '新手池'];
     for ($poolType = 0; $poolType <= 3; $poolType ++){
         foreach ($gachaName as $gachaNameValue) $$gachaNameValue = $gachaNameValue.strval($poolType);
-        print_r("</tr><td rowspan='".(5 + count($$pool5star))."'>{$poolNameArr[$poolType]}</td><td>抽卡总数</td><td>{$$poolAllNum}抽</td></tr><tr><td>四星数量</td><td>{$$pool4starNum}个({$$pool4starRatio}%)</td></tr><tr><td>五星数量</td><td>{$$pool5starNum}个({$$pool5starRatio}%)</td></tr><tr><td>距离保底</td><td>".(90 - ($$poolAllNum - $$pool5starCountX))."抽</td></tr><tr><td rowspan='".(1 + count($$pool5star))."'>五星物品</td>");
-        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("<tr><td style='color:".getInfo($poolTypeValue['name'], $poolTypeValue['type'], "color")."'>".($poolTypeKey + 1).".<span id='".$poolTypeValue['name']."'>".$poolTypeValue['name']."</span>[".$poolTypeValue['count']."]</td></tr>");
+        switch ($poolType){
+            case 1:
+                $floor = 80;
+                break;
+            case 3:
+                $floor = $$poolAllNum - $$pool5starCountX;
+                break;
+            default:
+                $floor = 90;
+                break;
+        };
+        print_r("</tr><td rowspan='".(5 + count($$pool5star))."'>{$poolNameArr[$poolType]}</td><td>抽卡总数</td><td>{$$poolAllNum}抽</td></tr><tr><td>四星数量</td><td>{$$pool4starNum}个({$$pool4starRatio}%)</td></tr><tr><td>五星数量</td><td>{$$pool5starNum}个({$$pool5starRatio}%)</td></tr><tr><td>距离保底</td><td>".($floor - ($$poolAllNum - $$pool5starCountX))."抽</td></tr><tr><td rowspan='".(1 + count($$pool5star))."'>五星物品</td>");
+        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("<tr><td style='color:".getInfo($poolTypeValue['name'], $poolTypeValue['type'], "color")."'>".($poolTypeKey + 1).".<span id='".$poolTypeValue['id']."'>".$poolTypeValue['name']."</span>[".$poolTypeValue['count']."]</td></tr>");
         if (count($$pool5star) == 0) print_r("<td>(○´･д･)ﾉ</td>");
     };
     print_r("</tr></table></div><p>抽卡记录分析工具已被使用 {$times['web']} 次</p><script>function showAvatar(){");
     for ($poolType = 0; $poolType <= 3; $poolType ++){
         $pool5star = "pool5star".strval($poolType);
-        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("document.getElementById('".$poolTypeValue['name']."').innerHTML=\"<img src='".$poolTypeValue['avatar']."' style='hight:40px;width:40px' />\";");
+        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("document.getElementById('".$poolTypeValue['id']."').innerHTML=\"<img src='".$poolTypeValue['avatar']."' style='hight:40px;width:40px' />\";");
     };
     print_r("document.getElementById('showA').href=\"JavaScript:showName()\";document.getElementById('showB').innerHTML=\"显示五星物品名称\";};function showName(){");
     for ($poolType = 0; $poolType <= 3; $poolType ++){
         $pool5star = "pool5star".strval($poolType);
-        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("document.getElementById('".$poolTypeValue['name']."').innerHTML=\"".$poolTypeValue['name']."\";");
+        foreach ($$pool5star as $poolTypeKey => $poolTypeValue) print_r("document.getElementById('".$poolTypeValue['id']."').innerHTML=\"".$poolTypeValue['name']."\";");
     };
    print_r("document.getElementById('showA').href=\"JavaScript:showAvatar()\";document.getElementById('showB').innerHTML=\"显示五星物品预览\";};</script>");
 }else{
