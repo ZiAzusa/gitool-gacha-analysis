@@ -230,4 +230,4 @@ Array
 7.添加用户手动上传抽卡记录数据的方式<br>
 ...
 #### 基于米哈游官方抽卡数据API打造
-#### Powered by 0803QwQ, Thanks for Your Using.
+#### Made by ZiAzusa, Thanks for Your Using.
